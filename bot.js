@@ -9,7 +9,7 @@ var ID = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
   };
   const DBL = require("dblapi.js");
-const dbl = new DBL(proccess.inv.DBL, bot);
+const dbl = new DBL(proccess.env.DBL, bot);
 function ban() {
     if(user[message.author.id].banned = 'yes') return
 }
@@ -242,7 +242,7 @@ message.channel.send({embed})
     });
 });
 
-bot.login(proccess.inv.BOT)
+bot.login(proccess.env.BOT)
 
 
  
