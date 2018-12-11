@@ -236,9 +236,5 @@ message.channel.send({embed})
     {
         if (err) console.error(err)
     });
-});
-
+})
 bot.login(process.env.BOT)
-
-
- 
