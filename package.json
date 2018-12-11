@@ -1,0 +1,15 @@
+{
+  "name": "Discotionary",
+  "description": "A Discord bot",
+  "version": "1.0.0",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "11.1.0",
+     "dblapi.js": "^2.3.0",
+    "discord.js": "^11.4.2",
+    "fs": "0.0.1-security"
+  }
+}
