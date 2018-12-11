@@ -1,4 +1,3 @@
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const prefix = '+'
