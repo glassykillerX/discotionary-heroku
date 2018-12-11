@@ -107,7 +107,7 @@ Reason: ${reason}`)
 bot.guilds.get(`516707312094674957`).channels.find(`name`, `discotionary-logs`).send({embed})
   }
   if(message.content == prefix + 'test') {
-      message.channel.send(user[message.author.id].words)
+      message.channel.send(user[message.author.id].words + `tttt`) 
   }
 if(message.content.startsWith(prefix + 'submit')) {
     if(user[message.author.id].words == 3) return message.channel.send(`${error} You've reached your maximum number of words in Discotionary, If you'd like to remove some of your words, type ${prefix}support and contact us`)
