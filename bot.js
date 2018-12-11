@@ -9,8 +9,7 @@ var ID = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
   };
   const DBL = require("dblapi.js");
-const dbl = new DBL(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
-`, bot);
+const dbl = new DBL(proccess.inv.DBL, bot);
 function ban() {
     if(user[message.author.id].banned = 'yes') return
 }
@@ -106,7 +105,7 @@ Reason: ${reason}`)
 bot.guilds.get(`516707312094674957`).channels.find(`name`, `discotionary-logs`).send({embed})
   }
   if(message.content == prefix + 'test') {
-      message.channel.send(user[message.author.id].words + `tttt`) 
+      message.channel.send(user[message.author.id].words)
   }
 if(message.content.startsWith(prefix + 'submit')) {
     if(user[message.author.id].words == 3) return message.channel.send(`${error} You've reached your maximum number of words in Discotionary, If you'd like to remove some of your words, type ${prefix}support and contact us`)
@@ -243,6 +242,7 @@ message.channel.send({embed})
     });
 });
 
-bot.login(proccess.inv.BOT_TOKEN)
+bot.login(proccess.inv.BOT)
 
 
+ 
