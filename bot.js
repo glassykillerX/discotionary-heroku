@@ -10,9 +10,6 @@ var ID = function () {
   };
   const DBL = require("dblapi.js");
 const dbl = new DBL(process.env.DBL, bot);
-function ban() {
-    if(user[message.author.id].banned = 'yes') return
-}
 // Optional events
 dbl.on('posted', () => {
   console.log('Server count posted!');
