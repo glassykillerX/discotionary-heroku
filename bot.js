@@ -37,7 +37,6 @@ bot.on('guildDelete', guild => {
 bot.on('message', message => {
 if(message.author.bot) return;
 if(message.channel.type == 'dm') return;
-if(!owners.includes(message.author.id)) return;
 if(!user[message.author.id]) user[message.author.id] = {
     words: 0,
     banned: 'no',
