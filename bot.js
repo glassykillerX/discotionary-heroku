@@ -1,3 +1,4 @@
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const prefix = '+'
@@ -5,8 +6,15 @@ const fs = require(`fs`)
 const owners = ['505834360159862787']
 let user = JSON.parse(fs.readFileSync(`./users.json`, `utf8`))
 let dic = JSON.parse(fs.readFileSync(`./words.json`, `utf8`))
+var ID = function () {
+    return '_' + Math.random().toString(36).substr(2, 9);
+  };
   const DBL = require("dblapi.js");
-const dbl = new DBL(process.env.DBL, bot);
+const dbl = new DBL(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
+`, bot);
+function ban() {
+    if(user[message.author.id].banned = 'yes') return
+}
 // Optional events
 dbl.on('posted', () => {
   console.log('Server count posted!');
@@ -34,15 +42,30 @@ bot.on('guildDelete', guild => {
 bot.on('message', message => {
 if(message.author.bot) return;
 if(message.channel.type == 'dm') return;
+if(!owners.includes(message.author.id)) return;
 if(!user[message.author.id]) user[message.author.id] = {
     words: 0,
-    banned: 'no',
-    word1: '',
-    word2: '',
-    word3: ''
+    banned: 'no'
   }
 if(message.author.id.includes(banned)) return;
-if(message.content.startsWith(prefix + 'profile')) {
+if(message.content == prefix + 's') {
+    if(!owners.includes(message.author.id)) return message.reply(`no`)
+     delete user[bot.users.forEach(u => {
+        u.id
+    })].word1
+    delete user[bot.users.forEach(u => {
+        u.id
+    })].word2
+    delete user[bot.users.forEach(u => {
+        u.id
+    })].word3
+}
+if(message.content == prefix + 'test') {
+    if(!owners.includes(message.author.id)) return message.reply(`no`)
+     message.channel.send(user[message.author.id])
+}
+/*if(message.content.startsWith(prefix + 'profile')) {
+
     let mentions = message.mentions.members.first()
     if(!mentions) {
         var word1 = user[message.author.id].word1
@@ -63,7 +86,7 @@ if(message.content.startsWith(prefix + 'profile')) {
         .setColor(`GREEN`)
         message.channel.send({embed})
     }
-}
+}*/
   if(message.content.startsWith(prefix + 'removeword')) {
       if(!owners.includes(message.author.id)) return message.reply(`${shame} Only the bot owner can use this command!`)
       let args = message.content.split(" ").slice(1)
@@ -81,13 +104,6 @@ if(message.content.startsWith(prefix + 'profile')) {
       user[bot.users.get(dic[word].userID).id].words--
       console.log(p)
       delete dic[word]
-      if(user[message.author.id].word1 == word) {
-        user[message.author.id].word1 == ''
-    } else if(user[message.author.id].word2 == word) {
-     user[message.author.id].word2 == ''
- } else if(user[message.author.id].word3 == word) {
-     user[message.author.id].word3 == ''
- } 
       const embed = new Discord.RichEmbed()
       .setTitle(`Word Deletion`)
       .setDescription(`Word: ${word}
@@ -122,13 +138,7 @@ message.channel.send(`${error} The explanation's length must be fewer than 500.`
                           id: ID,
                           userID: message.author.id
                       }
-                      if(user[message.author.id].word2 == '') {
-                          user[message.author.id].word2 = word
-                      } else if(user[message.author.id].word2 == '') {
-                        user[message.author.id].word2 = word
-                    } else if(user[message.author.id].word3 == '') {
-                        user[message.author.id].word3 = word
-                    } 
+
                       var embed = new Discord.RichEmbed()
                       .setTitle(`New Word`)
                       .setDescription(`Word: ${word.toLowerCase()}
@@ -180,13 +190,6 @@ message.channel.send({embed})
        if(dic[word].userID != message.author.id) return message.channel.send(`${shame} This word isn't submitted by you.`)
        if(!newEx) return message.channel.send(`${error} You have to type a new explanation.`)
        if(newEx == dic[word].exp) return message.channel.send(`${error} The old explanation and the new one are the same!`)
-       if(user[message.author.id].word1 == word) {
-           user[message.author.id].word1 == word
-       } else if(user[message.author.id].word2 == word) {
-        user[message.author.id].word2 == word
-    } else if(user[message.author.id].word3 == word) {
-        user[message.author.id].word3 == word
-    } else message.channel.send(`${error} Something's going on wrong... Please contact us.`)
        message.channel.send(`${success} You have successfully changed **${word}**'s explanation!`)
        var embed = new Discord.RichEmbed()
        .setTitle(`Word Edit`)
@@ -233,5 +236,8 @@ message.channel.send({embed})
     {
         if (err) console.error(err)
     });
-})
-bot.login(process.env.BOT)
+});
+
+bot.login('NTIxMDUwMzAyNTAyNDA0MTI0.Du6NuA.RRlKJDFN1lnGLVh_mjt3CREOnWM')
+
+
