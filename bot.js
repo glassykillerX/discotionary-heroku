@@ -1,4 +1,3 @@
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const prefix = '+'
@@ -10,8 +9,7 @@ var ID = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
   };
   const DBL = require("dblapi.js");
-const dbl = new DBL(`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMTA1MDMwMjUwMjQwNDEyNCIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ0NDcxNjY4fQ.wMe5DqZjqVBe8Sv01BjdN7perFE3z4yRXNPmGUcssCE
-`, bot);
+const dbl = new DBL(process.env.DBL, bot);
 function ban() {
     if(user[message.author.id].banned = 'yes') return
 }
@@ -238,6 +236,6 @@ message.channel.send({embed})
     });
 });
 
-bot.login('NTIxMDUwMzAyNTAyNDA0MTI0.Du6NuA.RRlKJDFN1lnGLVh_mjt3CREOnWM')
+bot.login(process.env.BOT)
 
 
