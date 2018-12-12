@@ -5,9 +5,6 @@ const fs = require(`fs`)
 const owners = ['505834360159862787']
 let user = JSON.parse(fs.readFileSync(`./users.json`, `utf8`))
 let dic = JSON.parse(fs.readFileSync(`./words.json`, `utf8`))
-var ID = function () {
-    return '_' + Math.random().toString(36).substr(2, 9);
-  };
   const DBL = require("dblapi.js");
 const dbl = new DBL(process.env.DBL, bot);
 // Optional events
